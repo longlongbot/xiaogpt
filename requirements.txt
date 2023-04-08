@@ -29,3 +29,4 @@ urllib3==1.26.15
 wcwidth==0.2.6
 websockets==11.0
 yarl==1.8.2
+revChatGPT==4.1.3

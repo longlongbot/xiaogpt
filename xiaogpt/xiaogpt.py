@@ -21,7 +21,7 @@ from miservice import MiAccount, MiIOService, MiNAService, miio_command
 from rich import print
 from rich.logging import RichHandler
 
-from xiaogpt.bot import ChatGPTBot, GPT3Bot, NewBingBot
+from xiaogpt.bot import ChatGPTBot, GPT3Bot, NewBingBot, RevChatGPTBot
 from xiaogpt.config import (
     COOKIE_TEMPLATE,
     EDGE_TTS_DICT,
@@ -180,6 +180,10 @@ class MiGPT:
                     bing_cookie_path=self.config.bing_cookie_path,
                     bing_cookies=self.config.bing_cookies,
                     proxy=self.config.proxy,
+                )
+            elif self.config.bot == "revchatgptapi":
+                self._chatbot = RevChatGPTBot(
+                    self.config.access_token, self.config.api_base, self.config.proxy
                 )
             else:
                 raise Exception(f"Do not support {self.config.bot}")

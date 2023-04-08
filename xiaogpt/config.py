@@ -28,6 +28,7 @@ HARDWARE_COMMAND_DICT = {
     "L07A": ("5-1", "5-5"),  # Redmi小爱音箱Play(l7a)
     "L15A": ("7-3", "7-4"),
     "X6A": ("7-3", "7-4"),  # 小米智能家庭屏6
+    "S12": ("5-1", "5-5"),
     # add more here
 }
 
@@ -59,6 +60,7 @@ class Config:
     account: str = os.getenv("MI_USER", "")
     password: str = os.getenv("MI_PASS", "")
     openai_key: str = os.getenv("OPENAI_API_KEY", "")
+    access_token: str = os.getenv("ACCESS_TOKEN","")
     proxy: str | None = None
     mi_did: str = os.getenv("MI_DID", "")
     keyword: Iterable[str] = KEY_WORD
