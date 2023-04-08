@@ -116,6 +116,7 @@ def main():
 
     options = parser.parse_args()
     config = Config.from_options(options)
+    print(config)
 
     miboy = MiGPT(config)
     loop = asyncio.get_event_loop()
