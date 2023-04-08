@@ -2,6 +2,7 @@ FROM python:3.10 AS builder
 WORKDIR /app
 COPY requirements.txt .
 RUN python3 -m venv .venv && .venv/bin/pip install --no-cache-dir -r requirements.txt
+RUN python3 -m venv .venv && .venv/bin/pip3 install -U git+https://github.com/yihong0618/MiService
 
 FROM python:3.10-slim
 
