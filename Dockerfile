@@ -12,6 +12,5 @@ COPY xiaogpt.py .
 ENV OPENAI_API_KEY=$OPENAI_API_KEY
 ENV XDG_CONFIG_HOME=/config
 ENV XIAOGPT_PORT=9527
-VOLUME /config
 EXPOSE 9527
 ENTRYPOINT [".venv/bin/python3","xiaogpt.py"]
