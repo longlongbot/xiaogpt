@@ -113,6 +113,20 @@ def main():
         dest="api_base",
         help="specify base url other than the OpenAI's official API address",
     )
+    parser.add_argument(
+        "--no-localhost",
+        dest="localhost",
+        action="store_false",
+        default=None,
+        help="serve Edge TTS output files via internet. "
+        "This is useful when running in a container",
+    )
+
+    parser.add_argument(
+        "--deployment_id",
+        dest="deployment_id",
+        help="specify deployment id, only used when api_base points to azure",
+    )
 
     options = parser.parse_args()
     config = Config.from_options(options)

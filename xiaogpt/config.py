@@ -70,12 +70,14 @@ class Config:
     bot: str = "revchatgptapi"
     cookie: str = ""
     api_base: str | None = None
+    deployment_id: str | None = None
     use_command: bool = False
     verbose: bool = False
     start_conversation: str = "开始持续对话"
     end_conversation: str = "结束持续对话"
     stream: bool = False
     enable_edge_tts: bool = False
+    localhost: bool = True
     edge_tts_voice: str = "zh-CN-XiaoxiaoNeural"
     gpt_options: dict[str, Any] = field(default_factory=dict)
     bing_cookie_path: str = ""
@@ -92,6 +94,15 @@ class Config:
                 )
         elif not self.openai_key:
             raise Exception("Using GPT api needs openai API key, please google how to")
+        if (
+            self.api_base
+            and self.api_base.endswith(("openai.azure.com", "openai.azure.com/"))
+            and not self.deployment_id
+        ):
+            raise Exception(
+                "Using Azure OpenAI needs deployment_id, read this: "
+                "https://learn.microsoft.com/en-us/azure/cognitive-services/openai/how-to/chatgpt?pivots=programming-language-chat-completions"
+            )
 
     @property
     def tts_command(self) -> str:
